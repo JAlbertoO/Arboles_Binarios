@@ -33,6 +33,7 @@ class MetodoArbol {
 		this.raiz = raiz;
 	}
 
+	//Recorrido PreOrden
 	preOrden(raiz) {
 		if (raiz !== null) {
 			console.log(raiz.getRaiz());
@@ -40,15 +41,25 @@ class MetodoArbol {
 			this.preOrden(raiz.getNodoDerecho());
 		};
 	}
-}
 
+	//Recorrido PostOrden
+	postOrden(raiz){
+		if(raiz !==null){
+			this.postOrden(raiz.getNodoIzquierdo());
+			this.postOrden(raiz.getNodoDerecho());
+			console.log(raiz.getRaiz());
+		};
+	}
+}
+//Recorrido PreOrden
+/*
 function preOrden(raiz){
 		if (raiz !== null) {
 			console.log(raiz.getRaiz());
 			preOrden(raiz.getNodoIzquierdo());
 			preOrden(raiz.getNodoDerecho());
 		};
-}
+}*/
 
 class Main {
 	insertar() {
@@ -66,7 +77,7 @@ class Main {
 
 		//let arbol = new preOrden(raiz);
 		const arbol = new MetodoArbol(raiz);
-		arbol.preOrden(arbol.raiz);
+		arbol.postOrden(arbol.raiz);
 	}
 }
 
